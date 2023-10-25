@@ -9,6 +9,9 @@ import {
 import AuthProvider from './provider/AuthProvider.jsx';
 import Root from './components/Root.jsx';
 import Home from './components/Home.jsx';
+import AddProduct from './components/AddProduct.jsx';
+import MyCart from './components/MyCart.jsx';
+import IndividualBrand from './components/IndividualBrand.jsx';
 
 const router = createBrowserRouter([
   {
@@ -18,6 +21,18 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>
+      },
+      {
+        path: "/addProduct",
+        element: <AddProduct></AddProduct>
+      },
+      {
+        path: '/addCart',
+        element: <MyCart></MyCart>
+      },
+      {
+        path: '/:carName',
+        element: <IndividualBrand></IndividualBrand>
       }
     ]
   },

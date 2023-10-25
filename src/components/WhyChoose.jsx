@@ -3,7 +3,7 @@
 const WhyChoose = () => {
    return (
       <div>
-         <div className="hero min-h-screen bg-base-200">
+         <div className="hero mt-9 bg-base-200">
             <div className=" text-center">
                <div className="">
                   <h1 className="text-5xl font-bold">Why Choose Us?</h1>
