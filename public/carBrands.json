@@ -1,0 +1,32 @@
+[
+   {
+      "id": 1,
+      "brand_name": "Toyota",
+      "brand_image": "https://i.ibb.co/hy5GhRG/31750.jpg"
+   },
+   {
+      "id": 2,
+      "brand_name": "Ford",
+      "brand_image": "https://i.ibb.co/8YhQ2jj/23399.jpg"
+   },
+   {
+      "id": 3,
+      "brand_name": "BMW",
+      "brand_image": "https://i.ibb.co/n7j6Mjv/BMW-i5-review.jpg"
+   },
+   {
+      "id": 4,
+      "brand_name": "Mercedes Benz",
+      "brand_image": "https://i.ibb.co/gmLDcHZ/big-with-watermark-mercedes-benz-s-class-dhaka-dhaka-2865.jpg"
+   },
+   {
+      "id": 5,
+      "brand_name": "Tesla",
+      "brand_image": "https://i.ibb.co/Fbcntt2/2018-Tesla-Model-S-75-D.jpg"
+   },
+   {
+      "id": 6,
+      "brand_name": "Honda",
+      "brand_image": "https://i.ibb.co/2kVryL3/Honda-Civic-Hybrid-2022-Europe-IAA-2023-1-X7-A0545-2.jpg"
+   }
+]
