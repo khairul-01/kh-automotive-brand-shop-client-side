@@ -14,6 +14,8 @@ import MyCart from './components/MyCart.jsx';
 import IndividualBrand from './components/IndividualBrand.jsx';
 import ProductDetails from './components/ProductDetails.jsx';
 import ProductUpdate from './components/ProductUpdate.jsx';
+import Registration from './components/Registration.jsx';
+import Login from './components/Login.jsx';
 
 const router = createBrowserRouter([
   {
@@ -47,6 +49,14 @@ const router = createBrowserRouter([
         path: '/productUpdate/:id',
         element: <ProductUpdate></ProductUpdate>,
         loader: ({params}) => fetch(`http://localhost:5000/cars/brandCars/${params.id}`)
+      },
+      {
+        path: '/registration',
+        element: <Registration></Registration>
+      },
+      {
+        path: '/login',
+        element: <Login></Login>,
       }
     ]
   },

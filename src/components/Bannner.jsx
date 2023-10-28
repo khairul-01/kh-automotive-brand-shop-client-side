@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 
 const Bannner = () => {
@@ -9,7 +10,7 @@ const Bannner = () => {
                <div className="max-w-md">
                   <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
                   <p className="mb-5 text-4xl">Welcome to KH Automotive Website</p>
-                  <button className="btn btn-primary">Get Registered</button>
+                  <Link to='/registration'><button className="btn btn-primary">Get Registered</button></Link>
                </div>
             </div>
          </div>
