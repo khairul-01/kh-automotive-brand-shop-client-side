@@ -2,9 +2,24 @@ import { useLoaderData, useParams } from "react-router-dom";
 
 
 const ProductDetails = () => {
+
    const car = useLoaderData();
    const { id } = useParams()
    console.log(id);
+   
+   const handleAddCart = () => {
+      fetch('http://localhost:5000/cars/carCarts', {
+         method: 'POST',
+         headers: {
+            'content-type' : 'application/json'
+         },
+         body: JSON.stringify(car)
+      })
+      .then(res => res.json())
+      .then(data => {
+         console.log(data);
+      })
+   }
    return (
       <div>
          <h1>Product Details : {car.name} </h1>
@@ -28,7 +43,7 @@ const ProductDetails = () => {
                </h2>
                <div className="card-actions justify-end">
 
-                  <button className="btn btn-primary"><div className="badge badge-outline">Add To Cart</div></button>
+                  <button onClick={handleAddCart} className="btn btn-primary"><div className="badge badge-outline">Add To Cart</div></button>
 
                </div>
             </div>

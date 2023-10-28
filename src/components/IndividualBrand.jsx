@@ -69,8 +69,8 @@ const IndividualBrand = () => {
                      <div className="card-actions justify-end">
                         
                         <Link to={`/productDetails/${car._id}`}><button className="btn btn-sm"><div className="badge badge-outline">Details</div></button></Link>
-                        <button className="btn btn-sm"><div className="badge badge-outline">Update</div></button>
-                                    
+                        <Link to ={`/productUpdate/${car._id}`}><button className="btn btn-sm"><div className="badge badge-outline">Update</div></button></Link>
+                                                           
                      </div>
                   </div>
                </div>)
