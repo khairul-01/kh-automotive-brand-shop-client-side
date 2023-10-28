@@ -1,6 +1,18 @@
+import { Link, useLoaderData, useParams } from "react-router-dom";
+import AwesomeSlider from 'react-awesome-slider';
+import 'react-awesome-slider/dist/custom-animations/cube-animation.css';
 
 
 const IndividualBrand = () => {
+   const { brandName } = useParams();
+   console.log(brandName);
+
+   const data = useLoaderData();
+
+   const brandedCar = data.filter(car => car.brandName.toLowerCase() == brandName.toLowerCase())
+   console.log(brandedCar);
+
+   fetch()
    return (
       <div>
          <div className="carousel w-full">
@@ -33,6 +45,40 @@ const IndividualBrand = () => {
                </div>
             </div>
          </div>
+         <h1>total data : {data.length} </h1>
+         <h1>Branded car data : {brandedCar.length} </h1>
+         <div className="grid grid-cols-2 gap-12">
+            {
+               brandedCar.map(car => <div key={car._id} className="card bg-base-100 shadow-xl">
+                  <figure><img className="w-full h-96" src={car.image} alt="Branded Car" /></figure>
+                  <div className="card-body">
+                     <h2 className="card-title">
+                        Name: {car.name}
+                        <div className="badge badge-secondary">Brand: {car.brandName}</div>
+                     </h2>
+                     <h2 className="card-title">
+                        Type:
+                        <div className="badge badge-secondary">{car.type}</div>
+                     </h2>
+                     <h2 className="card-title">
+                        Price: {car.price}
+                     </h2>
+                     <h2 className="card-title">
+                        Ratings: {car.rating}
+                     </h2>
+                     <div className="card-actions justify-end">
+                        
+                        <Link to={`/productDetails/${car._id}`}><button className="btn btn-sm"><div className="badge badge-outline">Details</div></button></Link>
+                        <button className="btn btn-sm"><div className="badge badge-outline">Update</div></button>
+                                    
+                     </div>
+                  </div>
+               </div>)
+            }
+         </div>
+
+
+
       </div>
    );
 };

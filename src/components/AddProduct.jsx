@@ -1,6 +1,34 @@
 
 
 const AddProduct = () => {
+   const handleAddProduct = event => {
+      event.preventDefault();
+      const form = event.target;
+      const image = form.image.value;
+      const name = form.name.value;
+      const brandName = form.brandName.value;
+      const type = form.type.value;
+      const price = form.price.value;
+      const shortDesc = form.shortDesc.value;
+      const rating = form.rating.value;
+      const addedProducts = {
+         image, name, brandName, type,price, shortDesc, rating
+      }
+      console.log(addedProducts);
+
+      fetch('http://localhost:5000/cars/brandCars', {
+         method: 'POST',
+         headers: {
+            'content-type' : 'application/json'
+         },
+         body: JSON.stringify(addedProducts)
+      })
+      .then(res => res.json())
+      .then(data => {
+         console.log(data);
+      })
+
+   }
    return (
       <div>
          <div className="hero min-h-screen bg-base-200">
@@ -10,7 +38,7 @@ const AddProduct = () => {
                   
                </div>
                <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                  <form className="card-body">
+                  <form onSubmit={handleAddProduct} className="card-body">
                      <div className="form-control">
                         <label className="label">
                            <span className="label-text">Image</span>

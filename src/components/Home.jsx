@@ -10,7 +10,7 @@ const Home = () => {
    const [cars, setCars] = useState([]);
 
    useEffect(() => {
-      fetch('carBrands.json')
+      fetch('http://localhost:5000/cars')
          .then(res => res.json())
          .then(data => {
             console.log(data);
@@ -23,7 +23,7 @@ const Home = () => {
          <About></About>
 
          <div>
-            <h1 className="text-center text-5xl font-bold mb-7">Our Car Brands</h1>
+            <h1 className="text-center text-5xl font-bold mb-7">Our Brand New Cars</h1>
             <div className="grid grid-cols-3 gap-5 ">
                {/* {
                cars.map(car => <div key={car.id}>
@@ -33,7 +33,7 @@ const Home = () => {
                
             } */}
                {
-                  cars.map(car => <BrandCars key={car.id} car={car} ></BrandCars>)
+                  cars.map(car => <BrandCars key={car._id} car={car} ></BrandCars>)
                }
             </div>
          </div>
