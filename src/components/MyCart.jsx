@@ -47,20 +47,20 @@ const MyCart = () => {
          <div className="grid grid-cols-3 gap-5">
             {
                cars.map(car => <div key={car._id} className="card bg-base-100 shadow-xl">
-                  <figure><img className="w-full h-96" src={car.image} alt="Branded Car" /></figure>
+                  <figure><img className="w-full h-72" src={car.image} alt="Branded Car" /></figure>
                   <div className="card-body">
                      <h2 className="card-title">
                         Name: {car.name}
-                        <div className="badge badge-secondary">Brand: {car.brandName}</div>
+                        <div className="bg-orange-600 rounded-lg px-3">Brand: {car.brandName}</div>
                      </h2>
-                     <h2 className="card-title">
-                        Type:
-                        <div className="badge badge-secondary">{car.type}</div>
+                     <h2 className="">
+                        Type: 
+                        <span className="">{car.type}</span>
                      </h2>
-                     <h2 className="card-title">
+                     <h2 className="">
                         Price: {car.price}
                      </h2>
-                     <h2 className="card-title">
+                     <h2 className="">
                         Ratings: {car.rating}
                      </h2>
                      <div className="card-actions justify-end">

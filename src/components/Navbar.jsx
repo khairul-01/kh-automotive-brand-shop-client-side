@@ -1,13 +1,29 @@
-import { Link, NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { AuthContext } from "../provider/AuthProvider";
 
 
 const Navbar = () => {
 
+   const { logOut, user } = useContext(AuthContext);
+
+   const navigate = useNavigate()
    const navLinks = <>
-      <li><NavLink to = '/'>Home</NavLink></li>
-      <li><NavLink to = '/addProduct'>Add Product</NavLink></li>
-      <li><NavLink to = '/addCart'>My Cart</NavLink></li>
+      <li><NavLink to='/'>Home</NavLink></li>
+      <li><NavLink to='/addProduct'>Add Product</NavLink></li>
+      <li><NavLink to='/addCart'>My Cart</NavLink></li>
    </>
+
+   const hanleSignOut = () => {
+      logOut()
+         .then(() => {
+            console.log('User sign out successfully.')
+            navigate('/')
+         })
+         .catch(error => {
+            console.error(error);
+         })
+   }
 
    return (
       <div>
@@ -32,7 +48,28 @@ const Navbar = () => {
                </ul>
             </div>
             <div className="navbar-end">
-               <Link to = '/login'><a className="btn">Login</a></Link>
+
+               {
+                  user ?
+                     <div className="flex gap-2">
+                        <p>{user?.displayName ? user.displayName : user.email}</p>
+                        {
+                           user.photoURL ?
+                              <div className="w-8 rounded-full">
+                                 <img src={user.photoURL} />
+                              </div>
+                              :
+                              <div className="avatar online">
+                                 <div className="w-8 rounded-full">
+                                    <img src="https://i.ibb.co/2YxnXZT/images.jpg" />
+                                 </div>
+                              </div>
+                        }
+                        <button onClick={hanleSignOut} className="btn btn-sm">sign out</button>
+                     </div>
+                     :
+                     <Link to='/login'><a className="btn">Login</a></Link>
+               }
             </div>
          </div>
       </div>
