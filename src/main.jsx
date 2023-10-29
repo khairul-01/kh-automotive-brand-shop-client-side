@@ -16,11 +16,13 @@ import ProductDetails from './components/ProductDetails.jsx';
 import ProductUpdate from './components/ProductUpdate.jsx';
 import Registration from './components/Registration.jsx';
 import Login from './components/Login.jsx';
+import ErrorPage from './components/ErrorPage.jsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
