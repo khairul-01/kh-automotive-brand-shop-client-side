@@ -1,5 +1,4 @@
 import { Link, useLoaderData, useParams } from "react-router-dom";
-import AwesomeSlider from 'react-awesome-slider';
 import 'react-awesome-slider/dist/custom-animations/cube-animation.css';
 
 
@@ -9,8 +8,8 @@ const IndividualBrand = () => {
 
    const data = useLoaderData();
 
-   const brandedCar = data.filter(car => car.brandName.toLowerCase() == brandName.toLowerCase())
-   console.log(brandedCar);
+   // const brandedCar = data.filter(car => car.brandName.toLowerCase() == brandName.toLowerCase())
+   // console.log(brandedCar);
 
    fetch()
    return (
@@ -46,10 +45,10 @@ const IndividualBrand = () => {
             </div>
          </div>
          <h1>total data : {data.length} </h1>
-         <h1>Branded car data : {brandedCar.length} </h1>
+         {/* <h1>Branded car data : {brandedCar.length} </h1> */}
          <div className="grid grid-cols-2 gap-12">
             {
-               brandedCar.map(car => <div key={car._id} className="card bg-base-100 shadow-xl">
+               data.map(car => <div key={car._id} className="card bg-base-100 shadow-xl">
                   <figure><img className="w-full h-96" src={car.image} alt="Branded Car" /></figure>
                   <div className="card-body">
                      <h2 className="card-title">
