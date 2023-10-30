@@ -1,15 +1,18 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import Swal from 'sweetalert2'
 
 const Login = () => {
 
    const {userLogin, signWithGoogle } = useContext(AuthContext);
+   const navigate = useNavigate();
+   const location = useLocation()
 
    const handleGoogle = () => {
       signWithGoogle()
       .then(data => {
+         navigate(location?.state ? location.state : '/');
          console.log(data.user);
       })
       .catch(error => {
@@ -33,6 +36,7 @@ const Login = () => {
             icon: 'success',
             confirmButtonText: 'Cool'
           })
+          navigate(location?.state ? location.state : '/');
       })
       .catch(error => {
          console.error(error);
@@ -58,6 +62,7 @@ const Login = () => {
                text: 'Your password or email does not matched!',
              })
          }
+
       })
    }
    return (
