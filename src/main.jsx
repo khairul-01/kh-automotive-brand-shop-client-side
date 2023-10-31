@@ -36,22 +36,22 @@ const router = createBrowserRouter([
       {
         path: '/addCart',
         element: <PrivateRoute><MyCart></MyCart></PrivateRoute>,
-        loader: ()=> fetch('http://localhost:5000/cars/carCarts'),
+        loader: ()=> fetch('https://b8a10-brandshop-server-side-khairul-01-n1wrod157.vercel.app/cars/carCarts'),
       },
       {
         path: '/:brandName',
         element: <IndividualBrand></IndividualBrand>,
-        loader: () => fetch('http://localhost:5000/cars/brandCars')
+        loader: () => fetch('https://b8a10-brandshop-server-side-khairul-01-n1wrod157.vercel.app/cars/brandCars')
       },
       {
         path: '/productDetails/:id',
         element: <PrivateRoute><ProductDetails></ProductDetails></PrivateRoute>,
-        loader: ({params}) => fetch(`http://localhost:5000/cars/brandCars/${params.id}`)
+        loader: ({params}) => fetch(`https://b8a10-brandshop-server-side-khairul-01-n1wrod157.vercel.app/cars/brandCars/${params.id}`)
       },
       {
         path: '/productUpdate/:id',
         element: <PrivateRoute><ProductUpdate></ProductUpdate></PrivateRoute>,
-        loader: ({params}) => fetch(`http://localhost:5000/cars/brandCars/${params.id}`)
+        loader: ({params}) => fetch(`https://b8a10-brandshop-server-side-khairul-01-n1wrod157.vercel.app/cars/brandCars/${params.id}`)
       },
       {
         path: '/registration',

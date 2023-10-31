@@ -9,7 +9,7 @@ const ProductDetails = () => {
    console.log(id);
    
    const handleAddCart = () => {
-      fetch('http://localhost:5000/cars/carCarts', {
+      fetch('https://b8a10-brandshop-server-side-khairul-01-n1wrod157.vercel.app/cars/carCarts', {
          method: 'POST',
          headers: {
             'content-type' : 'application/json'
