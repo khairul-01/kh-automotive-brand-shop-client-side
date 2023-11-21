@@ -2,9 +2,12 @@ import { useContext } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import { useTheme } from "../Route/ThemeProvider";
+import './root.css';
 
 
 const Navbar = () => {
+
+   // const { isDarkMode } = useTheme();
 
    const { logOut, user } = useContext(AuthContext);
    const { isDarkMode, toggleTheme } = useTheme();
@@ -14,6 +17,10 @@ const Navbar = () => {
       <li><NavLink to='/'>Home</NavLink></li>
       <li><NavLink to='/addProduct'>Add Product</NavLink></li>
       <li><NavLink to='/addCart'>My Cart</NavLink></li>
+      {
+         !user && <li><NavLink to='/login'>Login</NavLink></li>
+      }
+      
    </>
 
    const hanleSignOut = () => {
@@ -28,8 +35,8 @@ const Navbar = () => {
    }
 
    return (
-      <div>
-         <div className="navbar bg-base-100">
+      <div className={isDarkMode ? 'dark-mode' : 'light-mode'}>
+         <div className={isDarkMode ? 'dark-mode navbar' : 'light-mode navbar bg-base-100'}>
             <div className="navbar-start">
                <div className="dropdown">
                   <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -54,10 +61,10 @@ const Navbar = () => {
 
             </div>
             <div className="navbar-end">
-
+               <button onClick={toggleTheme} className="btn btn-sm btn-success ml-9"><div className="badge badge-secondary">{isDarkMode ? 'Dark Mode' : 'Light Mode'}</div></button>
                {
                   user ?
-                     <div className="flex gap-2 items-center">
+                     <div className={"flex gap-2 items-center"}>
                         <p className="font-bold">{user?.displayName ? user.displayName : user.email}</p>
                         {
                            user.photoURL ?
@@ -71,17 +78,22 @@ const Navbar = () => {
                                  </div>
                               </div>
                         }
-                        <button onClick={hanleSignOut} className="btn btn-sm">sign out</button>
+                        <button onClick={hanleSignOut} className="btn btn-sm btn-info">sign out</button>
                      </div>
                      :
-                     <Link to='/login'><a className="btn">Login</a></Link>
+                     <div className="avatar placeholder">
+                        <div className="bg-neutral text-neutral-content rounded-full w-32 h-9">
+                           <span className="">User Info</span>
+                        </div>
+                     </div>
                }
             </div>
          </div>
-         <div className="py-2 flex justify-end">
+         {/* <div className="py-2 flex justify-end gap-1">
+            <span className="font-bold">Change Theme</span>
             <input onClick={toggleTheme} type="checkbox" className="toggle toggle-error" checked />
             <span>{isDarkMode ? 'Dark Mode' : 'Light Mode'}</span>
-         </div>
+         </div> */}
       </div>
    );
 };

@@ -2,10 +2,13 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import Swal from 'sweetalert2'
+import { useTheme } from "../Route/ThemeProvider";
 
 const Registration = () => {
 
    const { userRegistration } = useContext(AuthContext);
+
+   const { isDarkMode } = useTheme();
 
    const handleRegistration = (event) => {
       event.preventDefault();
@@ -58,7 +61,7 @@ const Registration = () => {
    }
    return (
       <div>
-         <div className="hero min-h-screen bg-base-200">
+         <div className={isDarkMode ? 'dark-mode hero min-h-screen' : 'hero min-h-screen bg-base-200'}>
             <div className="hero-content flex-col ">
                <div className="text-center">
                   <h1 className="text-5xl font-bold">Register now!</h1>

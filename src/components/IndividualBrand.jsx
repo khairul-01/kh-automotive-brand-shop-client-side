@@ -1,9 +1,11 @@
 import { Link, useLoaderData, useParams } from "react-router-dom";
 // import 'react-awesome-slider/dist/custom-animations/cube-animation.css';
 import { useEffect, useState } from "react";
+import { useTheme } from "../Route/ThemeProvider";
 
 
 const IndividualBrand = () => {
+   const { isDarkMode } =useTheme();
    const [cars, setCars] = useState([]);
    const { brandName } = useParams();
    console.log(brandName);
@@ -33,6 +35,7 @@ const IndividualBrand = () => {
          </div>
       );
    }
+   
    return (
       <div>
          <div className="carousel w-full">
@@ -113,11 +116,11 @@ const IndividualBrand = () => {
                </div>
             </div>
          </div>
-         <h1>total data : {data.length} </h1>
+         <h1 className="text-center text-5xl mt-16 pb-10"><span className="text-amber-600">{brandName} Brand Products</span></h1>
          {/* <h1>Branded car data : {brandedCar.length} </h1> */}
-         <div className="grid grid-cols-2 gap-12">
+         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {
-               brandedCar.map(car => <div key={car._id} className="card bg-base-100 shadow-xl">
+               brandedCar.map(car => <div key={car._id} className={isDarkMode ? 'dark-mode card shadow-xl' : 'card bg-base-100 shadow-xl'}>
                   <figure><img className="w-full h-96" src={car.image} alt="Branded Car" /></figure>
                   <div className="card-body">
                      <h2 className="card-title">

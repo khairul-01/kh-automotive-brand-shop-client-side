@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import Swal from 'sweetalert2'
+import { useTheme } from "../Route/ThemeProvider";
 
 const MyCart = () => {
 
+   const {isDarkMode} = useTheme();
    const addedCars = useLoaderData();
    const [cars, setCars] = useState(addedCars);
 
@@ -20,7 +22,7 @@ const MyCart = () => {
          confirmButtonText: 'Yes, delete it!'
       }).then((result) => {
          if (result.isConfirmed) {
-            fetch(`https://b8a10-brandshop-server-side-khairul-01-fyam160fq.vercel.app/cars/carCarts/${id}`, {
+            fetch(`http://localhost:5000/cars/carCarts/${id}`, {
                method: 'DELETE',
             })
                .then(res => res.json())
@@ -44,9 +46,9 @@ const MyCart = () => {
    }
    return (
       <div>
-         <div className="grid grid-cols-3 gap-5">
+         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {
-               cars.map(car => <div key={car._id} className="card bg-base-100 shadow-xl">
+               cars.map(car => <div key={car._id} className={isDarkMode ? 'dark-mode card shadow-xl' : 'card bg-base-100 shadow-xl'}>
                   <figure><img className="w-full h-72" src={car.image} alt="Branded Car" /></figure>
                   <div className="card-body">
                      <h2 className="card-title">

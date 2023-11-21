@@ -1,6 +1,8 @@
 import Swal from 'sweetalert2'
+import { useTheme } from '../Route/ThemeProvider';
 
 const AddProduct = () => {
+   const {isDarkMode} = useTheme();
    const handleAddProduct = event => {
       event.preventDefault();
       const form = event.target;
@@ -16,7 +18,7 @@ const AddProduct = () => {
       }
       console.log(addedProducts);
 
-      fetch('https://b8a10-brandshop-server-side-khairul-01-fyam160fq.vercel.app/cars/brandCars', {
+      fetch('http://localhost:5000/cars/brandCars', {
          method: 'POST',
          headers: {
             'content-type' : 'application/json'
@@ -39,7 +41,7 @@ const AddProduct = () => {
    }
    return (
       <div>
-         <div className="hero min-h-screen bg-base-200">
+         <div className={isDarkMode ? 'dark-mode hero min-h-screen' : 'hero min-h-screen bg-base-200'}>
             <div className="hero-content flex-col ">
                <div className="text-center">
                   <h1 className="text-5xl font-bold">Add a Product now!</h1>

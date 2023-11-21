@@ -10,32 +10,36 @@ const Home = () => {
    const [cars, setCars] = useState([]);
 
    useEffect(() => {
-      fetch('https://b8a10-brandshop-server-side-khairul-01-fyam160fq.vercel.app/cars')
+      fetch('http://localhost:5000/cars')
          .then(res => res.json())
          .then(data => {
             console.log(data);
             setCars(data)
          })
    }, [])
+   console.log(cars);
    return (
-      <div>
+      <div className="space-y-9">
          <Bannner></Bannner>
          <About></About>
 
-         <div>
-            <h1 className="text-center text-5xl font-bold mb-7">Our Brand New Cars</h1>
-            <div className="grid grid-cols-3 gap-5 ">
-               {/* {
-               cars.map(car => <div key={car.id}>
-                  <img className="w-full h-72" src={car.brand_image} alt="" />
-                  <h1 className="text-center font-bold my-2">Brand Name: {car.brand_name}</h1>
-               </div>)
-               
-            } */}
-               {
-                  cars.map(car => <BrandCars key={car._id} car={car} ></BrandCars>)
-               }
-            </div>
+         <br />
+         <div className="">
+            <h1 className="text-center text-5xl font-bold mb-7 mt-48 md:mt-3">Our Brand New Cars</h1>
+            {
+               (!cars || !cars.length) ?
+                  <div className="h-96 flex flex-col items-center justify-center">
+                     <span className="loading loading-dots loading-lg text-error"></span>
+                     <h1 className="text-error font-bold text-2xl">Sorry for invenience  </h1>
+                     <h1 className="text-primary font-bold text-2xl">Please wait & refresh</h1>
+                  </div>
+                  :
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 ">
+                     {
+                        cars.map(car => <BrandCars key={car._id} car={car} ></BrandCars>)
+                     }
+                  </div>
+            }
          </div>
 
          <WhyChoose></WhyChoose>

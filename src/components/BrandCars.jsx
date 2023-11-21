@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 
 
 const BrandCars = ({ car }) => {
+
    return (
       <div>
          <NavLink to = {`/${car.brand_name}`}>

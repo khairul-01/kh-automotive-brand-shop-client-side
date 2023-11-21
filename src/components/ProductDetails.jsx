@@ -1,15 +1,17 @@
 import { useLoaderData, useParams } from "react-router-dom";
 import Swal from 'sweetalert2'
+import { useTheme } from "../Route/ThemeProvider";
 
 
 const ProductDetails = () => {
 
    const car = useLoaderData();
    const { id } = useParams()
+   const {isDarkMode} = useTheme();
    console.log(id);
    
    const handleAddCart = () => {
-      fetch('https://b8a10-brandshop-server-side-khairul-01-fyam160fq.vercel.app/cars/carCarts', {
+      fetch('http://localhost:5000/cars/carCarts', {
          method: 'POST',
          headers: {
             'content-type' : 'application/json'
@@ -31,10 +33,10 @@ const ProductDetails = () => {
    }
    return (
       <div>
-         <h1>Product Details : {car.name} </h1>
+         <h1 className="text-center text-5xl font-bold py-5 mb-5">{car.name} </h1>
          <div className="card bg-base-100 shadow-xl">
             <figure><img className="w-full" src={car.image} alt="Branded Car" /></figure>
-            <div className="card-body">
+            <div className={isDarkMode ? 'dark-mode card-body' : 'light-mode card-body'}>
                <h2 className="card-title">
                   Name: {car.name}
                   <div className="badge badge-secondary">Brand: {car.brandName}</div>
