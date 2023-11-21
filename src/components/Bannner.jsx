@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Bannner = () => {
    return (
       <div>
-         <div className="hero min-h-screen" style={{ backgroundImage: 'url(https://i.ibb.co/0jRH6bG/23676.jpg)' }}>
+         <div className="hero min-h-screen" style={{ backgroundImage: 'url(https://i.ibb.co/g7ZnVBS/dd06d1693bcf02d35b0334a0bad12a5f.jpg)' }}>
             <div className="hero-overlay bg-opacity-60"></div>
             <div className="hero-content text-center text-neutral-content">
                <div className="max-w-md">

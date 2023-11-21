@@ -1,12 +1,25 @@
 import { Link, useLoaderData, useParams } from "react-router-dom";
-import 'react-awesome-slider/dist/custom-animations/cube-animation.css';
+// import 'react-awesome-slider/dist/custom-animations/cube-animation.css';
+import { useEffect, useState } from "react";
 
 
 const IndividualBrand = () => {
+   const [cars, setCars] = useState([]);
    const { brandName } = useParams();
    console.log(brandName);
 
+   console.log(cars)
    const data = useLoaderData();
+
+   useEffect(() => {
+      fetch('http://localhost:5000/cars')
+      .then(res => res.json())
+      .then(data => setCars(data))
+   },[])
+
+   const brand = cars.find(car => car.brand_name.toLowerCase() == brandName.toLowerCase());
+   
+   console.log(brand?.brand_image);
 
    // console.log(data);
 
@@ -26,7 +39,7 @@ const IndividualBrand = () => {
             <div id="slide1" className="carousel-item relative w-full">
                {/* <img src="https://i.ibb.co/8YhQ2jj/23399.jpg" className="w-full" /> */}
 
-               <div className="hero min-h-screen" style={{ backgroundImage: 'url(https://i.ibb.co/8YhQ2jj/23399.jpg)' }}>
+               <div className="hero min-h-screen" style={{ backgroundImage: `url(${brand?.brand_image})` }}>
                   <div className="hero-overlay bg-opacity-60"></div>
                   <div className="hero-content text-center text-neutral-content">
                      <div className="max-w-md">
@@ -45,7 +58,7 @@ const IndividualBrand = () => {
             <div id="slide2" className="carousel-item relative w-full">
                {/* <img src="https://i.ibb.co/hy5GhRG/31750.jpg" className="w-full" /> */}
 
-               <div className="hero min-h-screen" style={{ backgroundImage: 'url(https://i.ibb.co/hy5GhRG/31750.jpg)' }}>
+               <div className="hero min-h-screen" style={{ backgroundImage: 'url(https://i.ibb.co/FWcHTtf/images.jpg)' }}>
                   <div className="hero-overlay bg-opacity-60"></div>
                   <div className="hero-content text-center text-neutral-content">
                      <div className="max-w-md">
@@ -64,7 +77,7 @@ const IndividualBrand = () => {
             <div id="slide3" className="carousel-item relative w-full">
                {/* <img src="https://i.ibb.co/n7j6Mjv/BMW-i5-review.jpg" className="w-full" /> */}
 
-               <div className="hero min-h-screen" style={{ backgroundImage: 'url(https://i.ibb.co/n7j6Mjv/BMW-i5-review.jpg)' }}>
+               <div className="hero min-h-screen" style={{ backgroundImage: 'url(https://i.ibb.co/4wbs5n6/23rd-century-futuristic-truck-with-hyper-modern-drive-wide-angle-lens-futuristic-skyscraper-backgrou.jpg)' }}>
                   <div className="hero-overlay bg-opacity-60"></div>
                   <div className="hero-content text-center text-neutral-content">
                      <div className="max-w-md">
