@@ -1,12 +1,11 @@
-import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../provider/AuthProvider";
 import Swal from 'sweetalert2'
 import { useTheme } from "../Route/ThemeProvider";
+import useAuth from "../hooks/useAuth";
 
 const Registration = () => {
 
-   const { userRegistration } = useContext(AuthContext);
+   const { userRegistration } = useAuth();
 
    const { isDarkMode } = useTheme();
 

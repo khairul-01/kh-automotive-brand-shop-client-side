@@ -10,7 +10,7 @@ const Home = () => {
    const [cars, setCars] = useState([]);
 
    useEffect(() => {
-      fetch('http://localhost:5000/cars')
+      fetch('https://b8a10-brandshop-server-side-khairul-01.vercel.app/cars')
          .then(res => res.json())
          .then(data => {
             console.log(data);
