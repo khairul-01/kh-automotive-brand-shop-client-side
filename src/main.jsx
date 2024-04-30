@@ -20,6 +20,13 @@ import ErrorPage from './components/ErrorPage.jsx';
 import PrivateRoute from './Route/PrivateRoute.jsx';
 import ThemeProvider from './Route/ThemeProvider.jsx';
 
+import {
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
+
+const queryClient = new QueryClient()
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -68,12 +75,15 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <ThemeProvider>
-      <AuthProvider>
-        <RouterProvider router={router}>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider>
+        <AuthProvider>
+          <RouterProvider router={router}>
 
-        </RouterProvider>
-      </AuthProvider>
-    </ThemeProvider>
+          </RouterProvider>
+        </AuthProvider>
+      </ThemeProvider>
+    </QueryClientProvider>
+
   </React.StrictMode>,
 )

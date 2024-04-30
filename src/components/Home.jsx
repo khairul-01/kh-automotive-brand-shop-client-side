@@ -1,23 +1,41 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import Bannner from "./Bannner";
 import About from "./About";
 import WhyChoose from "./WhyChoose";
 import BrandCars from "./BrandCars";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 
 
 const Home = () => {
 
-   const [cars, setCars] = useState([]);
+   // const [cars, setCars] = useState([]);
 
-   useEffect(() => {
-      fetch('https://b8a10-brandshop-server-side-khairul-01.vercel.app/cars')
-         .then(res => res.json())
-         .then(data => {
-            console.log(data);
-            setCars(data)
-         })
-   }, [])
-   console.log(cars);
+   const axiosPublic = useAxiosPublic();
+
+   const { isPending, error, data: cars = [] } = useQuery({
+      queryKey: ["cars"],
+      queryFn: async () => {
+          const res = await axiosPublic.get('/cars');
+          return res.data;
+      }
+  })
+
+  console.log(cars);
+
+  if (isPending) return 'Loading...'
+
+  if (error) return 'An error has occurred: ' + error.message;
+
+   // useEffect(() => {
+   //    fetch('https://b8a10-brandshop-server-side-khairul-01.vercel.app/cars')
+   //       .then(res => res.json())
+   //       .then(data => {
+   //          console.log(data);
+   //          setCars(data)
+   //       })
+   // }, [])
+   // console.log(car);
    return (
       <div className="space-y-9">
          <Bannner></Bannner>
